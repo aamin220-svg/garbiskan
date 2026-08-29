@@ -11,8 +11,9 @@ const { Resend } = require('resend');
 const app = express();
 app.set('trust proxy', 1);
 app.use(express.json({ limit: '20kb' }));
+app.use(express.static(__dirname));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const DATA_DIR = path.join(__dirname, 'data');
 const DB_FILE = process.env.DB_FILE || path.join(DATA_DIR, 'members.sqlite');
 fs.mkdirSync(DATA_DIR, { recursive: true });
